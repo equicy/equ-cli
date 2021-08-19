@@ -1,6 +1,6 @@
 // 解析用户的参数
 const program = require('commander');
-const path = require('path');
+const create = require('./create');
 
 const { version } = require('./constants');
 
@@ -40,7 +40,7 @@ Reflect.ownKeys(mapActions).forEach((action) => {
         console.log(mapActions[action].description);
       } else {
         // mini-cli create xxx  [node, mini-cli, create, xxx]
-        require(path.resolve(__dirname, action))(...process.argv.slice(3));
+        create(...process.argv.slice(3));
       }
     });
 });
